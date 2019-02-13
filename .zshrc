@@ -80,19 +80,30 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# Custom Functions
+runnodeserver() {
+    NODE_ENV=${1:-"DEVELOPMENT"} PORT=${2:-"3000"} npm run ${3:-"start:dev"}
+}
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
 alias gitx='open -a GitX .'
 alias nrdc='npm run dev'
-alias nrds='NODE_ENV=development PORT=3001 npm run start:dev'
+alias nrds='runnodeserver'
 alias gpud='git pull upstream develop'
 alias grvv='git remote -vv'
 alias gbvv='git branch -vv'
 alias gs='git status'
+alias oc='cd ~/official/code'
+alias pc='cd ~/personal/code'
+alias ooc='open ~/official/code'
+alias opc='open ~/personal/code'
+alias dd='cd ~/personal/idata'
 export PATH="$HOME/Downloads/":$PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$HOME/.wasmer/bin:$PATH"
